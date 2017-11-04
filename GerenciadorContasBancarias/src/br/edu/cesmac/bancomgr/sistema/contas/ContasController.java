@@ -1,13 +1,14 @@
 package br.edu.cesmac.bancomgr.sistema.contas;
 
-import java.util.Date;
-import java.util.List;
-
 import br.edu.cesmac.bancomgr.bancoDeDados.BDController;
 import br.edu.cesmac.bancomgr.bancoDeDados.IBD;
 import br.edu.cesmac.bancomgr.sharedmodel.Banco;
+import br.edu.cesmac.bancomgr.sharedmodel.Conta;
 import br.edu.cesmac.bancomgr.sharedmodel.Poupanca;
 import br.edu.cesmac.bancomgr.sharedmodel.Transacao;
+
+import java.util.Date;
+import java.util.List;
 
 public class ContasController implements IConta {
 	private IBD bancoDados;
@@ -44,8 +45,9 @@ public class ContasController implements IConta {
 
 	@Override
 	public float consultarSaldo(int numeroConta, int senha) {
-		// TODO Auto-generated method stub
-		return 0;
+		List<Conta> contas = this.bancoDados.obterContas();
+		Conta conta = contas.stream().filter(c->c.getNumero() == numeroConta).filter(c-> c.validarSenha(senha)).findFirst().orElse(null);
+		return conta.getSaldo();
 	}
 
 	@Override
