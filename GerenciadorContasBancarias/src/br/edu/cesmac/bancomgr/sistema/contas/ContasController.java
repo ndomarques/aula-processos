@@ -3,9 +3,12 @@ package br.edu.cesmac.bancomgr.sistema.contas;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.edu.cesmac.bancomgr.bancoDeDados.BDController;
 import br.edu.cesmac.bancomgr.bancoDeDados.IBD;
 import br.edu.cesmac.bancomgr.sharedmodel.Banco;
+import br.edu.cesmac.bancomgr.sharedmodel.Conta;
 import br.edu.cesmac.bancomgr.sharedmodel.Poupanca;
 import br.edu.cesmac.bancomgr.sharedmodel.Transacao;
 
@@ -58,6 +61,33 @@ public class ContasController implements IConta {
 	public List<Transacao> obterExtrato(int numeroConta, int senha) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public float sacar(int numero, int senha, float valor) {
+		for (Conta conta : bancoDados.obterContas()) {
+			if (numero == conta.getNumero()) {
+				String mensagem = "";
+
+				if (conta.validarSenha(senha)) {
+					if (conta.sacar(valor)) {
+						mensagem = "Operação realizada com sucesso!";
+					} else {
+						mensagem = "Saldo insuficiente ou valor invalido !";
+					}
+				} else {
+					mensagem = "Senha invalida!";
+				}
+				
+				JOptionPane.showMessageDialog(null, mensagem);
+				
+				return 0;
+			}
+		}
+		
+		JOptionPane.showMessageDialog(null, "Conta invalida");
+		
+		return 0;
 	}
 
 }
