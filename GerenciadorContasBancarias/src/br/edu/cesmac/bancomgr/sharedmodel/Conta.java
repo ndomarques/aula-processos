@@ -129,6 +129,10 @@ public abstract class Conta {
 		}
 	}
 	
+	public void depositar(double valor) {
+		this.saldo += valor;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		boolean out = false;

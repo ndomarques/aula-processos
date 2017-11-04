@@ -1,5 +1,7 @@
 package br.edu.cesmac.bancomgr.dialogo;
 
+import javax.swing.JOptionPane;
+
 import br.edu.cesmac.bancomgr.sistema.movimentacao.IMovimentacao;
 import br.edu.cesmac.bancomgr.sistema.movimentacao.MovimentacaoController;
 import javafx.fxml.FXML;
@@ -21,12 +23,10 @@ public class DepositarUIController {
 	public DepositarUIController() {
 		this.movimentacaoController = new MovimentacaoController();
 	}
-	
-	
+		
 	public void setStageWindow(Stage stage) {
 		this.stageWindow = stage;
 	}
-	
 	
 	@FXML
 	public void fecharJanela() {
@@ -35,7 +35,18 @@ public class DepositarUIController {
 	
 	@FXML
 	public void ok() {
-		//TODO implementar
+		String numeroText = tfNumeroConta.getText();
+		String valorText = tfValor.getText();
+		
+		if ((numeroText == null || numeroText.trim().isEmpty()) ||
+				(valorText == null || valorText.trim().isEmpty())) {
+			JOptionPane.showMessageDialog(null, "Por favor preencha os campos!");
+			return;
+		}
+		
+		int numero = new Integer(numeroText);
+		float valor = new Float(valorText);
+		movimentacaoController.depositar(numero, valor);
 	}
 
 }

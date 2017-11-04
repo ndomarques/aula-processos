@@ -1,10 +1,13 @@
 package br.edu.cesmac.bancomgr.sistema.movimentacao;
 
+import javax.swing.JOptionPane;
+
 import br.edu.cesmac.bancomgr.bancoDeDados.BDController;
 import br.edu.cesmac.bancomgr.bancoDeDados.IBD;
+import br.edu.cesmac.bancomgr.sharedmodel.Conta;
 
 public class MovimentacaoController implements IMovimentacao {
-private IBD bancoDados;
+	private IBD bancoDados;
 	
 	public MovimentacaoController() {
 		this.bancoDados = BDController.createInstance();
@@ -18,8 +21,15 @@ private IBD bancoDados;
 
 	@Override
 	public void depositar(int numeroConta, float valor) {
-		// TODO Auto-generated method stub
-
+		for (Conta conta : bancoDados.obterContas()) {
+			if (conta.getNumero() == numeroConta) {
+				conta.depositar(valor);
+				JOptionPane.showMessageDialog(null, "Depósito efetuado com suscesso!");
+				return;
+			}
+		}
+		
+		JOptionPane.showMessageDialog(null, "Conta não encontrada!");
 	}
 
 	@Override
