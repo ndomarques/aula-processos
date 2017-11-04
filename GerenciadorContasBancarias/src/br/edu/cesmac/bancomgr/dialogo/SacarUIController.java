@@ -1,5 +1,6 @@
 package br.edu.cesmac.bancomgr.dialogo;
 
+import br.edu.cesmac.bancomgr.sistema.contas.ContasController;
 import br.edu.cesmac.bancomgr.sistema.movimentacao.IMovimentacao;
 import br.edu.cesmac.bancomgr.sistema.movimentacao.MovimentacaoController;
 import javafx.fxml.FXML;
@@ -40,7 +41,11 @@ public class SacarUIController {
 	
 	@FXML
 	public void ok() {
-		//TODO implementar
+		ContasController contasController = new ContasController();
+		int numero = new Integer(tfNumeroConta.getText());
+		int senha = new Integer(pfSenha.getText());
+		Float valor = new Float(tfValor.getText());
+		contasController.sacar(numero, senha, valor);
 	}
 
 }

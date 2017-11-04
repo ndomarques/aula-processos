@@ -119,7 +119,15 @@ public abstract class Conta {
 			this.transacoesSimples.add(t);
 	}
 	
-	
+	public boolean sacar(double valor) {
+		// valida
+		if(valor <= this.getSaldo() && valor > 0) {
+			this.saldo -= valor;
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
