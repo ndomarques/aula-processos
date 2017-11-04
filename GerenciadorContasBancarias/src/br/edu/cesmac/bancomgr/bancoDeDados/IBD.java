@@ -13,6 +13,7 @@ public interface IBD {
 	public List<Conta> obterContas();
 	public List<Transacao> obterTransacoes();
 	public Banco obterBanco();
+	public Conta getContaPassandoNumeroComoParametro(int numero);
 	
 	public void definirDadosBanco(Banco b);
 	

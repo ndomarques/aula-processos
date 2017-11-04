@@ -171,5 +171,16 @@ public class BDController implements IBD {
 			}
 		}
 	}
+	
+	public Conta getContaPassandoNumeroComoParametro(int numero) {
+			
+			for (int i = 0; i < listaContasDoBanco.size(); i++) {
+			if (listaContasDoBanco.get(i).getNumero() == numero) {
+				return listaContasDoBanco.get(i);
 
+			
+			}
+		}
+		return null;
+	}
 }

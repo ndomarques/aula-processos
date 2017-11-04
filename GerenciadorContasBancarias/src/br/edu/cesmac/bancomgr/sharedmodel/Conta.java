@@ -79,6 +79,10 @@ public abstract class Conta {
 		return status;
 	}
 	
+	public void setStatus(int codStatus){
+		this.status = codStatus;
+	}
+	
 	public Banco getBanco() {
 		return banco;
 	}
