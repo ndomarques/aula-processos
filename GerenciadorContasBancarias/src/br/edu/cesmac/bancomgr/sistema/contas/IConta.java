@@ -14,4 +14,5 @@ public interface IConta {
 	public float consultarSaldo(int numeroConta, int senha);
 	public List<Transacao> obterExtrato(int numeroConta, int senha, Date dataInicio, Date dataFim);
 	public List<Transacao> obterExtrato(int numeroConta, int senha);
+	
 }

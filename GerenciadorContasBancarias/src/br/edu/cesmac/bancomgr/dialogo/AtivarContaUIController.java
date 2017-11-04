@@ -1,5 +1,7 @@
 package br.edu.cesmac.bancomgr.dialogo;
 
+import javax.swing.JOptionPane;
+
 import br.edu.cesmac.bancomgr.sistema.contas.ContasController;
 import br.edu.cesmac.bancomgr.sistema.contas.IConta;
 import javafx.fxml.FXML;
@@ -34,7 +36,10 @@ public class AtivarContaUIController {
 	
 	@FXML
 	public void ok() {
-		//TODO implementar
+		int numero = new Integer(tfNumeroConta.getText()).intValue();	
+		this.contaController.ativarConta(numero);
+		JOptionPane.showMessageDialog(null, "Conta Ativada com sucesso!");
+		fecharJanela();
 	}
 
 }
