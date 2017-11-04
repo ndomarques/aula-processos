@@ -26,8 +26,9 @@ public class Poupanca extends Conta{
 		return taxaRendimento;
 	}
 
-	
-	
+	public void aplicarRendimento() {
+		this.saldo *= taxaRendimento;
+	}	
 	
 	@Override
 	public boolean equals(Object obj) {

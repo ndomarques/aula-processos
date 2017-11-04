@@ -51,6 +51,10 @@ public abstract class Conta {
 		return saldo;
 	}
 	
+	public boolean isSaldoNegativo() {
+		return (this.saldo<0?true:false);
+	}
+
 	public boolean validarSenha(int senha) {
 		if(gerarHash(senha).equals(this.hashSenha))
 			return true;

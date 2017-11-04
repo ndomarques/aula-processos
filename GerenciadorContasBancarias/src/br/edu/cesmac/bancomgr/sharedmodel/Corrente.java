@@ -26,7 +26,9 @@ public class Corrente extends Conta{
 		return taxaJuros;
 	}
 
-	
+	public void aplicarJuros() {
+		this.saldo *= taxaJuros;
+	}
 	
 	@Override
 	public boolean equals(Object obj) {
