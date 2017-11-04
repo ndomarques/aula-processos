@@ -6,11 +6,13 @@ import java.util.List;
 import br.edu.cesmac.bancomgr.bancoDeDados.BDController;
 import br.edu.cesmac.bancomgr.bancoDeDados.IBD;
 import br.edu.cesmac.bancomgr.sharedmodel.Banco;
+import br.edu.cesmac.bancomgr.sharedmodel.Corrente;
 import br.edu.cesmac.bancomgr.sharedmodel.Poupanca;
 import br.edu.cesmac.bancomgr.sharedmodel.Transacao;
 
 public class ContasController implements IConta {
 	private IBD bancoDados;
+	public static final float SALDO_INICIAL_ABERTURA_DE_CONTA = 0;
 	
 	public ContasController() {
 		this.bancoDados = BDController.createInstance();
@@ -26,8 +28,10 @@ public class ContasController implements IConta {
 
 	@Override
 	public int criarContaCorrente(int numero, int senha, float limite, float taxaJuros) {
-		// TODO Auto-generated method stub
-		return 0;
+		Banco banco = this.bancoDados.obterBanco();	
+		Corrente c = new Corrente(numero, SALDO_INICIAL_ABERTURA_DE_CONTA, senha, banco, limite, taxaJuros);
+		this.bancoDados.adicionarConta(c);
+		return 1;
 	}
 
 	@Override
