@@ -1,7 +1,6 @@
 package br.edu.cesmac.bancomgr.dialogo;
 
 import javax.swing.JOptionPane;
-
 import br.edu.cesmac.bancomgr.sistema.contas.ContasController;
 import br.edu.cesmac.bancomgr.sistema.movimentacao.IMovimentacao;
 import br.edu.cesmac.bancomgr.sistema.movimentacao.MovimentacaoController;
