@@ -11,6 +11,11 @@ import br.edu.cesmac.bancomgr.sharedmodel.Transacao;
 
 public class BDController implements IBD {
 
+	private Banco banco;
+	private List<Conta> contasDoBanco;
+	//TODO adicionar outras listas
+	
+	
 	@Override
 	public List<Conta> obterContas() {
 		// TODO Auto-generated method stub
