@@ -41,7 +41,7 @@
       <Button layoutX="327.0" layoutY="439.0" mnemonicParsing="false" onAction="#transferir" text="Transferir" />
       <Button layoutX="483.0" layoutY="360.0" mnemonicParsing="false" text="Aplicar Rendimento" />
       <Button layoutX="483.0" layoutY="399.0" mnemonicParsing="false" text="Cobrar Juros" />
-      <Button layoutX="284.0" layoutY="546.0" mnemonicParsing="false" onAction="#reloadData" prefHeight="84.0" prefWidth="229.0" text="Atualizar Exibiçao">
+      <Button layoutX="284.0" layoutY="546.0" mnemonicParsing="false" onAction="#reloadData" prefHeight="84.0" prefWidth="229.0" text="Atualizar Exibicao">
          <font>
             <Font size="20.0" />
          </font>

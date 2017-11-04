@@ -7,7 +7,7 @@ public class RendimentoController implements IRendimento{
 private IBD bancoDados;
 	
 	public RendimentoController() {
-		this.bancoDados = new BDController();
+		this.bancoDados = BDController.createInstance();
 	}
 
 	@Override

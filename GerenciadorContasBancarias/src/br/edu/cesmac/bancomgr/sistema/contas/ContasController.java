@@ -5,19 +5,23 @@ import java.util.List;
 
 import br.edu.cesmac.bancomgr.bancoDeDados.BDController;
 import br.edu.cesmac.bancomgr.bancoDeDados.IBD;
+import br.edu.cesmac.bancomgr.sharedmodel.Banco;
+import br.edu.cesmac.bancomgr.sharedmodel.Poupanca;
 import br.edu.cesmac.bancomgr.sharedmodel.Transacao;
 
 public class ContasController implements IConta {
 	private IBD bancoDados;
 	
 	public ContasController() {
-		this.bancoDados = new BDController();
+		this.bancoDados = BDController.createInstance();
 	}
 
 	@Override
 	public int criarContaPoupanca(int numero, int senha, int diaAniversario, float taxaRendimento) {
-		// TODO Auto-generated method stub
-		return 0;
+		Banco banco = this.bancoDados.obterBanco();
+		Poupanca p = new Poupanca(numero, 0, senha, banco, diaAniversario, taxaRendimento);
+		this.bancoDados.adicionarConta(p);
+		return 1;
 	}
 
 	@Override

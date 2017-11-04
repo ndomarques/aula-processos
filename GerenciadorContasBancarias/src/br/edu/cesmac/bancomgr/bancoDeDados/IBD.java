@@ -12,6 +12,7 @@ import br.edu.cesmac.bancomgr.sharedmodel.Transacao;
 public interface IBD {
 	public List<Conta> obterContas();
 	public List<Transacao> obterTransacoes();
+	public Banco obterBanco();
 	
 	public void definirDadosBanco(Banco b);
 	
@@ -20,7 +21,7 @@ public interface IBD {
 	public void adicionarTransacao(Transacao t);
 	
 	public void adicionarCategoriaCliente(CategoriaCliente c);
-	public void adicionarTarifaTransacaoCliente(TarifaTransacaoCliente c);
+	public void adicionarTarifaTransacaoCliente(TarifaTransacaoCliente ttc);
 	public void adicionarCliente(Cliente c);
 	
 	//EXCLUSAO
@@ -28,7 +29,7 @@ public interface IBD {
 	public void excluirTransacao(Transacao t);
 		
 	public void excluirCategoriaCliente(CategoriaCliente c);
-	public void excluirTarifaTransacaoCliente(TarifaTransacaoCliente c);
+	public void excluirTarifaTransacaoCliente(TarifaTransacaoCliente ttc);
 	public void excluirCliente(Cliente c);
 	
 	//ALTERACAO
@@ -36,6 +37,6 @@ public interface IBD {
 	public void alterarTransacao(int id, Transacao t);
 			
 	public void alterarCategoriaCliente(int id, CategoriaCliente c);
-	public void alterarTarifaTransacaoCliente(int id, TarifaTransacaoCliente c);
+	public void alterarTarifaTransacaoCliente(int id, TarifaTransacaoCliente ttc);
 	public void alterarCliente(int id, Cliente c);
 }

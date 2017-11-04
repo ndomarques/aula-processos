@@ -16,6 +16,8 @@ import br.edu.cesmac.bancomgr.ihc.UIObterExtratoGeralUtil;
 import br.edu.cesmac.bancomgr.ihc.UIObterExtratoPeriodoUtil;
 import br.edu.cesmac.bancomgr.ihc.UISacarUtil;
 import br.edu.cesmac.bancomgr.ihc.UITransferirUtil;
+import br.edu.cesmac.bancomgr.ihc.tabelas.DadosConta;
+import br.edu.cesmac.bancomgr.ihc.tabelas.DadosTransacao;
 import br.edu.cesmac.bancomgr.sharedmodel.Conta;
 import br.edu.cesmac.bancomgr.sharedmodel.Transacao;
 import br.edu.cesmac.bancomgr.sistema.rendimento.IRendimento;
@@ -69,7 +71,7 @@ public class MainUIController {
 		this.depositarUI = new UIDepositarUtil();
 		this.transferirUI = new UITransferirUtil();
 		
-		this.bancoDados = new BDController();
+		this.bancoDados = BDController.createInstance();
 		this.rendimentoController = new RendimentoController();
 	}
 	
@@ -83,14 +85,22 @@ public class MainUIController {
 	public void reloadData() {
 		//atualizar dados das contas
 		List<Conta> contasCadastradas = this.bancoDados.obterContas();
-		this.updateTvContasData(contasCadastradas, 
+		List<DadosConta> listaDadosContas = new ArrayList<>();
+		for(Conta c : contasCadastradas) {
+			listaDadosContas.add(new DadosConta(c));
+		}
+		this.updateTvContasData(listaDadosContas, 
 				Arrays.asList("Número","Saldo", "Tipo", "Status"),
 				Arrays.asList("numero", "saldo", "tipo", "status"),
 				Arrays.asList(75d,75d,75d,75d));
 		
 		//atualizar dados das transacoes
 		List<Transacao> transacoesCadastradas = this.bancoDados.obterTransacoes();
-		this.updateTvTransacoesData(transacoesCadastradas, 
+		List<DadosTransacao> listaDadosTransacoes = new ArrayList<>();
+		for(Transacao t : transacoesCadastradas) {
+			listaDadosTransacoes.add(new DadosTransacao(t));
+		}
+		this.updateTvTransacoesData(listaDadosTransacoes, 
 				Arrays.asList("Origem","Destino", "Nome", "Valor"),
 				Arrays.asList("numeroOrigem", "numeroDestino", "nome", "valor"),
 				Arrays.asList(75d,75d,150d,75d));

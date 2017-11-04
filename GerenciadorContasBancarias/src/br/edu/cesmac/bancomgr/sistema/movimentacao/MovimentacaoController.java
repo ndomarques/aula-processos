@@ -7,7 +7,7 @@ public class MovimentacaoController implements IMovimentacao {
 private IBD bancoDados;
 	
 	public MovimentacaoController() {
-		this.bancoDados = new BDController();
+		this.bancoDados = BDController.createInstance();
 	}
 
 	@Override
